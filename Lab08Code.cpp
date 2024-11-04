@@ -9,10 +9,10 @@ private:
     std::vector<std::vector<int>> data;
 
 public:
-    // Constructor to initialize matrix with a given size
+    // Constructor
     Matrix(int n) : size(n), data(n, std::vector<int>(n, 0)) {}
 
-    // Function to load matrix from a file
+    // Load matrix from a file
     void loadFromFile(const std::string& filename) {
         std::ifstream file(filename);
         if (file.is_open()) {
@@ -27,7 +27,7 @@ public:
         }
     }
 
-    // Function to display the matrix
+    // Display the matrix
     void display() const {
         for (const auto& row : data) {
             for (int element : row) {
@@ -37,7 +37,7 @@ public:
         }
     }
 
-    // Operator overloading for matrix addition
+    // operator overload
     Matrix operator+(const Matrix& other) const {
         Matrix result(size);
         for (int i = 0; i < size; ++i) {
@@ -48,7 +48,7 @@ public:
         return result;
     }
 
-    // Operator overloading for matrix multiplication
+    // Operator overload for multiplication
     Matrix operator*(const Matrix& other) const {
         Matrix result(size);
         for (int i = 0; i < size; ++i) {
@@ -62,7 +62,7 @@ public:
         return result;
     }
 
-    // Function to calculate the sum of diagonal elements
+    // calculate sum of diagonal elements
     int diagonalSum() const {
         int mainDiagonalSum = 0, secondaryDiagonalSum = 0;
         for (int i = 0; i < size; ++i) {
@@ -82,24 +82,24 @@ public:
     }
 };
 
-// Main function to demonstrate matrix operations
+// Demonstrate matrix operations
 int main() {
     int size;
     std::cout << "Enter the matrix size: ";
     std::cin >> size;
 
-    // Initialize two matrices
+    // Initialize 
     Matrix matrixA(size);
     Matrix matrixB(size);
 
-    // Prompt the user to enter file names
+    // User to enter file names
     std::string fileA, fileB;
     std::cout << "Enter the filename for Matrix A: ";
     std::cin >> fileA;
     std::cout << "Enter the filename for Matrix B: ";
     std::cin >> fileB;
 
-    // Load data from files
+    // Load from file
     matrixA.loadFromFile(fileA);
     matrixB.loadFromFile(fileB);
 
@@ -118,11 +118,11 @@ int main() {
     std::cout << "\nA * B:" << std::endl;
     multiplicationResult.display();
 
-    // Diagonal sum
+    // Matrix diagonal 
     int diagSum = matrixA.diagonalSum();
     std::cout << "\nSum of main and secondary diagonal elements of A: " << diagSum << std::endl;
 
-    // Row swapping
+    // Row swap
     int row1, row2;
     std::cout << "Enter two row indices to swap in Matrix A: ";
     std::cin >> row1 >> row2;
